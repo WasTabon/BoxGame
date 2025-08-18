@@ -6,6 +6,7 @@ public enum UIKey
 {
     Shop,
     BuyZone1,
+    TakeMoney1,
 }
 
 [System.Serializable]
