@@ -12,6 +12,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Vector3 cameraOffset = new Vector3(0, 10, -5);
     [SerializeField] private float cameraFollowSpeed = 5f;
 
+    [Header("Animation")]
+    [SerializeField] private Animator animator;   // Ссылка на Animator
+    [SerializeField] private string runBoolName = "Run"; // Название параметра в Animator
+
     private Rigidbody rb;
 
     private void Awake()
@@ -32,6 +36,13 @@ public class PlayerController : MonoBehaviour
         {
             Quaternion targetRotation = Quaternion.LookRotation(move, Vector3.up);
             rb.rotation = Quaternion.Slerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
+        }
+
+        // Обновляем анимацию (бежит / стоит)
+        if (animator != null)
+        {
+            bool isRunning = move.sqrMagnitude > 0.01f;
+            animator.SetBool(runBoolName, isRunning);
         }
     }
 
