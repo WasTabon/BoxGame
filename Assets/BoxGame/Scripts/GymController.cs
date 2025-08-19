@@ -50,11 +50,18 @@ public class GymController : MonoBehaviour
 
         LoadGyms();
 
-        // Включаем доступные зоны
+        // Включаем доступные зоны и настраиваем таблички/коллайдеры
         for (int i = 0; i < gyms.Count && i < zones.Count; i++)
         {
             if (i != 0)
-                zones[i].SetActive(gyms[i].isAvialiable);
+            {
+                bool available = gyms[i].isAvialiable;
+                zones[i].SetActive(available);
+
+                // если куплена → выключаем sign и collider
+                _signs[i - 1].SetActive(!available);
+                _colliders[i - 1].SetActive(!available);
+            }
         }
 
         foreach (var gym in gyms)
@@ -88,14 +95,20 @@ public class GymController : MonoBehaviour
 
     public void BuyZone(int index)
     {
-        if (index < 0 || index >= gyms.Count || index >= zones.Count)
+        if (index < 0 || index >= gyms.Count - 1 || index >= zones.Count)
             return;
 
         if (WalletController.Instance.Materials >= 350)
         {
             WalletController.Instance.Materials -= 350;
+
+            // открываем следующую зону
             gyms[index + 1].isAvialiable = true;
-            zones[index].SetActive(true);
+            zones[index + 1].SetActive(true);
+
+            // отключаем табличку и коллайдер этой зоны
+            _signs[index].SetActive(false);
+            _colliders[index].SetActive(false);
 
             MusicController.Instance.PlaySpecificSound(_upgradeSound);
             

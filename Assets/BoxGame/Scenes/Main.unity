@@ -1494,6 +1494,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 409628, guid: 702740a5e4ac1ee40a1888d3b62faa91, type: 3}
   m_PrefabInstance: {fileID: 172816018}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &179189663 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1256054293985390, guid: 0d6c49005a476d444b7a04283166a026, type: 3}
+  m_PrefabInstance: {fileID: 2085921589}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &193627456
 GameObject:
   m_ObjectHideFlags: 0
@@ -1547,6 +1552,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &195464690 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1256054293985390, guid: 0d6c49005a476d444b7a04283166a026, type: 3}
+  m_PrefabInstance: {fileID: 323235690}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &196752454
 GameObject:
   m_ObjectHideFlags: 0
@@ -3559,6 +3569,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 375320626}
   m_CullTransparentMesh: 1
+--- !u!1 &377388814 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1256054293985390, guid: 0d6c49005a476d444b7a04283166a026, type: 3}
+  m_PrefabInstance: {fileID: 2077795998}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &378174436
 GameObject:
   m_ObjectHideFlags: 0
@@ -4644,6 +4659,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 428368, guid: b1b1573cfe717c04caad3e631288f7e9, type: 3}
   m_PrefabInstance: {fileID: 508071454}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &519693681 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1256054293985390, guid: 0d6c49005a476d444b7a04283166a026, type: 3}
+  m_PrefabInstance: {fileID: 47753175}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &520294666
 GameObject:
@@ -7888,6 +7908,22 @@ MonoBehaviour:
   - {fileID: 1185697318}
   - {fileID: 666272839}
   - {fileID: 845408100}
+  _signs:
+  - {fileID: 179189663}
+  - {fileID: 377388814}
+  - {fileID: 1765500672}
+  - {fileID: 519693681}
+  - {fileID: 195464690}
+  - {fileID: 1799524118}
+  - {fileID: 1544905754}
+  _colliders:
+  - {fileID: 1250087441}
+  - {fileID: 1139072909}
+  - {fileID: 1844864952}
+  - {fileID: 193627456}
+  - {fileID: 894974243}
+  - {fileID: 242485522}
+  - {fileID: 1230371312}
   gyms:
   - name: Iron Ivan
     level: 1
@@ -16690,6 +16726,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8807328057953525188, guid: 76d43ac5d5c2418586e9e7f07231a97b, type: 3}
   m_PrefabInstance: {fileID: 1532484870}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1544905754 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1256054293985390, guid: 0d6c49005a476d444b7a04283166a026, type: 3}
+  m_PrefabInstance: {fileID: 1618922167}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1569277694
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18534,6 +18575,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1761320138}
   m_CullTransparentMesh: 1
+--- !u!1 &1765500672 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1256054293985390, guid: 0d6c49005a476d444b7a04283166a026, type: 3}
+  m_PrefabInstance: {fileID: 342228553}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1770294837
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19280,6 +19326,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1788276290}
   m_CullTransparentMesh: 1
+--- !u!1 &1799524118 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1256054293985390, guid: 0d6c49005a476d444b7a04283166a026, type: 3}
+  m_PrefabInstance: {fileID: 1272217795}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1802826940
 GameObject:
   m_ObjectHideFlags: 0
