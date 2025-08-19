@@ -10,7 +10,7 @@ public class Gym
     public Sprite icon;
     public int income;
     public int upgradeCost;
-    public bool isAvialiable;
+    public bool isAvialiable = false;
 
     private const int baseCost = 500;
     private const float costMultiplier = 1.75f;
@@ -31,12 +31,14 @@ public class GymController : MonoBehaviour
 {
     public static GymController Instance;
 
-    [SerializeField] private GameObject _zone2;
-    [SerializeField] private GameObject _zone3;
-    [SerializeField] private GameObject _zone4;
-    [SerializeField] private GameObject _zone5;
-    [SerializeField] private GameObject _zone6;
-    [SerializeField] private GameObject _zone7;
+    [SerializeField] private GameObject _haveNoMoneyPanel;
+    
+    [SerializeField] private AudioClip _upgradeSound;
+    [SerializeField] private AudioClip _haveNoMoneySound;
+    
+    [SerializeField] private List<GameObject> zones;
+    [SerializeField] private List<GameObject> _signs;
+    [SerializeField] private List<GameObject> _colliders;
 
     public List<Gym> gyms;
 
@@ -46,8 +48,15 @@ public class GymController : MonoBehaviour
     {
         Instance = this;
 
-        LoadGyms(); 
-        
+        LoadGyms();
+
+        // Включаем доступные зоны
+        for (int i = 0; i < gyms.Count && i < zones.Count; i++)
+        {
+            if (i != 0)
+                zones[i].SetActive(gyms[i].isAvialiable);
+        }
+
         foreach (var gym in gyms)
         {
             if (gym.isAvialiable)
@@ -67,7 +76,6 @@ public class GymController : MonoBehaviour
             }
 
             timer = 0f;
-
             SaveGyms();
         }
     }
@@ -80,7 +88,26 @@ public class GymController : MonoBehaviour
 
     public void BuyZone(int index)
     {
-        
+        if (index < 0 || index >= gyms.Count || index >= zones.Count)
+            return;
+
+        if (WalletController.Instance.Materials >= 350)
+        {
+            WalletController.Instance.Materials -= 350;
+            gyms[index + 1].isAvialiable = true;
+            zones[index].SetActive(true);
+
+            MusicController.Instance.PlaySpecificSound(_upgradeSound);
+            
+            UIController.Instance._buyZonePanel.gameObject.SetActive(false);
+            
+            SaveGyms();
+        }
+        else
+        {
+            _haveNoMoneyPanel.SetActive(true);
+            MusicController.Instance.PlaySpecificSound(_haveNoMoneySound);
+        }
     }
 
     public void SaveGyms()

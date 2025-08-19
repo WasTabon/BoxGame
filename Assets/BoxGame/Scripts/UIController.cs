@@ -40,6 +40,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private AudioClip _haveNoMoneySound;
     
     [SerializeField] private GameObject _gymPanel;
+    public GameObject _buyZonePanel;
     [SerializeField] private GameObject _haveNoMoneyPanel;
     [SerializeField] private GameObject _haveNoMoneyPanel2;
     [SerializeField] private TextMeshProUGUI _boxPanelName;
@@ -51,6 +52,8 @@ public class UIController : MonoBehaviour
     [Header("UI Elements")]
     [SerializeField] private List<UIElement> uiElements = new List<UIElement>();
 
+    private int _currentIndex;
+    
     private Dictionary<UIKey, Transform> uiDictionary;
 
     private Gym _currentGym;
@@ -131,6 +134,17 @@ public class UIController : MonoBehaviour
             _haveNoMoneyPanel2.SetActive(true);
             MusicController.Instance.PlaySpecificSound(_haveNoMoneySound);
         }
+    }
+
+    public void OpenBuyZonePanel(int index)
+    {
+        _currentIndex = index;
+        _buyZonePanel.gameObject.SetActive(true);
+    }
+
+    public void BuyZone()
+    {
+        GymController.Instance.BuyZone(_currentIndex);
     }
     
     public void Show(UIKey key, float duration = 0.3f)

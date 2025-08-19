@@ -1196,6 +1196,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 196752456}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: OpenBuyZonePanel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 6
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &142523561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1587,6 +1599,7 @@ MonoBehaviour:
   _upgradeSound: {fileID: 0}
   _haveNoMoneySound: {fileID: 0}
   _gymPanel: {fileID: 199255971}
+  _buyZonePanel: {fileID: 523016323}
   _haveNoMoneyPanel: {fileID: 914635967}
   _haveNoMoneyPanel2: {fileID: 1488976344}
   _boxPanelName: {fileID: 1127794786}
@@ -2648,6 +2661,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 196752456}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: OpenBuyZonePanel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4771,7 +4796,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &523016324
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7367,6 +7392,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 196752456}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: OpenBuyZonePanel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &816930030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7840,6 +7877,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf2240d78006e574db488709c9921106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _haveNoMoneyPanel: {fileID: 1580671931}
+  _upgradeSound: {fileID: 0}
+  _haveNoMoneySound: {fileID: 0}
+  zones:
+  - {fileID: 861814336}
+  - {fileID: 1154170052}
+  - {fileID: 302230078}
+  - {fileID: 738329816}
+  - {fileID: 1185697318}
+  - {fileID: 666272839}
+  - {fileID: 845408100}
   gyms:
   - name: Iron Ivan
     level: 1
@@ -7852,43 +7900,43 @@ MonoBehaviour:
     icon: {fileID: 0}
     income: 0
     upgradeCost: 500
-    isAvialiable: 1
+    isAvialiable: 0
   - name: Bullet Bruno
     level: 1
     icon: {fileID: 0}
     income: 0
     upgradeCost: 500
-    isAvialiable: 1
+    isAvialiable: 0
   - name: Silent Sam
     level: 1
     icon: {fileID: 0}
     income: 0
     upgradeCost: 500
-    isAvialiable: 1
+    isAvialiable: 0
   - name: Big Bear Boris
     level: 1
     icon: {fileID: 0}
     income: 0
     upgradeCost: 500
-    isAvialiable: 1
+    isAvialiable: 0
   - name: Lightning Leo
     level: 1
     icon: {fileID: 0}
     income: 0
     upgradeCost: 500
-    isAvialiable: 1
+    isAvialiable: 0
   - name: Crusher Carl
     level: 1
     icon: {fileID: 0}
     income: 0
     upgradeCost: 500
-    isAvialiable: 1
+    isAvialiable: 0
   - name: Storm Sergei
     level: 1
     icon: {fileID: 0}
     income: 0
     upgradeCost: 500
-    isAvialiable: 1
+    isAvialiable: 0
 --- !u!1001 &833032052
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9271,10 +9319,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 196752454}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 196752456}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: BuyZone
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -12282,6 +12330,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 196752456}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: OpenBuyZonePanel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1134856650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13910,10 +13970,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 196752454}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 196752456}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: BuyMaterials
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -19036,6 +19096,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 196752456}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: OpenBuyZonePanel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1782248145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21481,6 +21553,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 196752456}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: OpenBuyZonePanel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2044103997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22628,6 +22712,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 196752456}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: OpenBuyZonePanel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
