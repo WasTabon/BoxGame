@@ -7,6 +7,19 @@ TagManager:
   - Shop
   - BuyZone1
   - TakeMoney1
+  - BuyZone2
+  - BuyZone3
+  - BuyZone4
+  - BuyZone5
+  - BuyZone6
+  - BuyZone7
+  - TakeMoney2
+  - TakeMoney3
+  - TakeMoney4
+  - TakeMoney5
+  - TakeMoney6
+  - TakeMoney7
+  - TakeMoney8
   layers:
   - Default
   - TransparentFX
