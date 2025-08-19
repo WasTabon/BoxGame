@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
@@ -22,8 +23,17 @@ public class UIController : MonoBehaviour
 {
     public static UIController Instance;
 
-    [SerializeField] private string _moneyPerSecondText = "$/second";
+    [SerializeField] private TextMeshProUGUI _moneyText1;
+    [SerializeField] private TextMeshProUGUI _moneyText2;
     
+    [SerializeField] private string _moneyPerSecondText = "$/second";
+
+    [SerializeField] private AudioClip _takeMoneySound;
+    [SerializeField] private AudioClip _upgradeSound;
+    [SerializeField] private AudioClip _haveNoMoneySound;
+    
+    [SerializeField] private GameObject _gymPanel;
+    [SerializeField] private GameObject _haveNoMoneyPanel;
     [SerializeField] private TextMeshProUGUI _boxPanelName;
     [SerializeField] private Image _boxPanelIcon;
     [SerializeField] private TextMeshProUGUI _boxPanelMoneyPerSecond;
@@ -34,6 +44,8 @@ public class UIController : MonoBehaviour
     [SerializeField] private List<UIElement> uiElements = new List<UIElement>();
 
     private Dictionary<UIKey, Transform> uiDictionary;
+
+    private Gym _currentGym;
 
     private void Awake()
     {
@@ -50,16 +62,50 @@ public class UIController : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        _moneyText1.text = WalletController.Instance.Money.ToString();
+        _moneyText2.text = WalletController.Instance.Money.ToString();
+    }
+
     public void OpenGymWindow(int index)
     {
         Gym gym = GymController.Instance.gyms[index];
 
+        _currentGym = gym;
+        
         _boxPanelIcon.sprite = gym.icon;
         _boxPanelName.text = gym.name;
         _boxPanelMoneyPerSecond.text = $"{gym.level}{_moneyPerSecondText}";
         gym.UpdateUpgradeCost();
         _boxPanelUpgradeButtonText.text = $"UPGRADE ({gym.upgradeCost})";
         _boxPanelTakeMoneyButtonText.text = $"TAKE ({gym.income})";
+
+        _gymPanel.SetActive(true);
+    }
+
+    public void TakeMoney()
+    {
+        WalletController.Instance.Money += _currentGym.income;
+        _currentGym.income = 0;
+        _boxPanelTakeMoneyButtonText.text = $"TAKE ({_currentGym.income})";
+        MusicController.Instance.PlaySpecificSound(_takeMoneySound);
+    }
+
+    public void UpgradeGym()
+    {
+        if (WalletController.Instance.Money >= _currentGym.upgradeCost)
+        {
+            WalletController.Instance.Money -= _currentGym.upgradeCost;
+            _currentGym.LevelUp();
+            _boxPanelUpgradeButtonText.text = $"UPGRADE ({_currentGym.upgradeCost})";
+            MusicController.Instance.PlaySpecificSound(_upgradeSound);
+        }
+        else
+        {
+            _haveNoMoneyPanel.SetActive(true);
+            MusicController.Instance.PlaySpecificSound(_haveNoMoneySound);
+        }
     }
     
     public void Show(UIKey key, float duration = 0.3f)

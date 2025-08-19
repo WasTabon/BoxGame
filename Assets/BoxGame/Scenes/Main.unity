@@ -1079,7 +1079,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d614b0eb62abc43ae1fb6ab707dffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moneyPerSecondText: $/second
+  _moneyText1: {fileID: 1348252414}
+  _moneyText2: {fileID: 362098438}
+  _moneyPerSecondText: $/SECOND
+  _takeMoneySound: {fileID: 0}
+  _upgradeSound: {fileID: 0}
+  _haveNoMoneySound: {fileID: 0}
+  _gymPanel: {fileID: 0}
+  _haveNoMoneyPanel: {fileID: 0}
   _boxPanelName: {fileID: 1127794786}
   _boxPanelIcon: {fileID: 820499833}
   _boxPanelMoneyPerSecond: {fileID: 370308485}
@@ -1109,7 +1116,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &199255972
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8972,6 +8979,7 @@ Transform:
   - {fileID: 196752455}
   - {fileID: 1502253265}
   - {fileID: 830632823}
+  - {fileID: 1651628741}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1517010345
@@ -9471,6 +9479,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8807328057953525188, guid: 76d43ac5d5c2418586e9e7f07231a97b, type: 3}
   m_PrefabInstance: {fileID: 1585757550}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1651628740
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1651628741}
+  - component: {fileID: 1651628742}
+  m_Layer: 0
+  m_Name: WalletController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1651628741
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651628740}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1502625054}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1651628742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651628740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a70cfcea01380c4438dbc70248623326, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1656177864
 GameObject:
   m_ObjectHideFlags: 0
