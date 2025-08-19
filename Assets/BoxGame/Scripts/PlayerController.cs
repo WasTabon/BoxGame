@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        
+        // зробити збір грошей і прокачку
     }
 
     private void FixedUpdate()
