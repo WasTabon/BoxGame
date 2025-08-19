@@ -10,6 +10,12 @@ public enum UIKey
     Shop,
     BuyZone1,
     TakeMoney1,
+    BuyZone2,
+    BuyZone3,
+    BuyZone4,
+    BuyZone5,
+    BuyZone6,
+    BuyZone7,
 }
 
 [System.Serializable]
