@@ -31,6 +31,13 @@ public class GymController : MonoBehaviour
 {
     public static GymController Instance;
 
+    [SerializeField] private GameObject _zone2;
+    [SerializeField] private GameObject _zone3;
+    [SerializeField] private GameObject _zone4;
+    [SerializeField] private GameObject _zone5;
+    [SerializeField] private GameObject _zone6;
+    [SerializeField] private GameObject _zone7;
+
     public List<Gym> gyms;
 
     private float timer;
@@ -69,6 +76,11 @@ public class GymController : MonoBehaviour
     private class GymListWrapper
     {
         public List<Gym> gyms;
+    }
+
+    public void BuyZone(int index)
+    {
+        
     }
 
     public void SaveGyms()

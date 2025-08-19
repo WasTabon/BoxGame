@@ -31,6 +31,7 @@ public class UIController : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI _moneyText1;
     [SerializeField] private TextMeshProUGUI _moneyText2;
+    [SerializeField] private TextMeshProUGUI _moneyText3;
     
     [SerializeField] private string _moneyPerSecondText = "$/second";
 
@@ -40,6 +41,7 @@ public class UIController : MonoBehaviour
     
     [SerializeField] private GameObject _gymPanel;
     [SerializeField] private GameObject _haveNoMoneyPanel;
+    [SerializeField] private GameObject _haveNoMoneyPanel2;
     [SerializeField] private TextMeshProUGUI _boxPanelName;
     [SerializeField] private Image _boxPanelIcon;
     [SerializeField] private TextMeshProUGUI _boxPanelMoneyPerSecond;
@@ -72,6 +74,7 @@ public class UIController : MonoBehaviour
     {
         _moneyText1.text = WalletController.Instance.Money.ToString();
         _moneyText2.text = WalletController.Instance.Money.ToString();
+        _moneyText3.text = WalletController.Instance.Money.ToString();
     }
 
     public void OpenGymWindow(int index)
@@ -111,6 +114,21 @@ public class UIController : MonoBehaviour
         else
         {
             _haveNoMoneyPanel.SetActive(true);
+            MusicController.Instance.PlaySpecificSound(_haveNoMoneySound);
+        }
+    }
+
+    public void BuyMaterials()
+    {
+        if (WalletController.Instance.Money >= 100)
+        {
+            WalletController.Instance.Money -= 100;
+            WalletController.Instance.Materials += 50;
+            MusicController.Instance.PlaySpecificSound(_upgradeSound);
+        }
+        else
+        {
+            _haveNoMoneyPanel2.SetActive(true);
             MusicController.Instance.PlaySpecificSound(_haveNoMoneySound);
         }
     }
