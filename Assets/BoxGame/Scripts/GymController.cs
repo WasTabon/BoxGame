@@ -14,12 +14,12 @@ public class Gym
 
     private const int baseCost = 500;
     private const float costMultiplier = 1.75f;
-    
+
     public void UpdateUpgradeCost()
     {
         upgradeCost = Mathf.RoundToInt(baseCost * Mathf.Pow(costMultiplier, level - 1));
     }
-    
+
     public void LevelUp()
     {
         level++;
@@ -39,6 +39,8 @@ public class GymController : MonoBehaviour
     {
         Instance = this;
 
+        LoadGyms(); 
+        
         foreach (var gym in gyms)
         {
             if (gym.isAvialiable)
@@ -58,6 +60,32 @@ public class GymController : MonoBehaviour
             }
 
             timer = 0f;
+
+            SaveGyms();
+        }
+    }
+
+    [Serializable]
+    private class GymListWrapper
+    {
+        public List<Gym> gyms;
+    }
+
+    public void SaveGyms()
+    {
+        GymListWrapper wrapper = new GymListWrapper { gyms = gyms };
+        string json = JsonUtility.ToJson(wrapper);
+        PlayerPrefs.SetString("GymsData", json);
+        PlayerPrefs.Save();
+    }
+
+    public void LoadGyms()
+    {
+        if (PlayerPrefs.HasKey("GymsData"))
+        {
+            string json = PlayerPrefs.GetString("GymsData");
+            GymListWrapper wrapper = JsonUtility.FromJson<GymListWrapper>(json);
+            gyms = wrapper.gyms;
         }
     }
 }

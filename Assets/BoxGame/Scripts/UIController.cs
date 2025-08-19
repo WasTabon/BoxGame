@@ -99,6 +99,7 @@ public class UIController : MonoBehaviour
             WalletController.Instance.Money -= _currentGym.upgradeCost;
             _currentGym.LevelUp();
             _boxPanelUpgradeButtonText.text = $"UPGRADE ({_currentGym.upgradeCost})";
+            _boxPanelMoneyPerSecond.text = $"{_currentGym.level}{_moneyPerSecondText}";
             MusicController.Instance.PlaySpecificSound(_upgradeSound);
         }
         else

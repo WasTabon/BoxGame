@@ -4,7 +4,7 @@ public class WalletController : MonoBehaviour
 {
     public static WalletController Instance;
 
-    private int _money;
+    [SerializeField] private int _money;
 
     public int Money
     {
