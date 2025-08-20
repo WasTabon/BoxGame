@@ -39,6 +39,7 @@ public class GymController : MonoBehaviour
     [SerializeField] private List<GameObject> zones;
     [SerializeField] private List<GameObject> _signs;
     [SerializeField] private List<GameObject> _colliders;
+    [SerializeField] private List<GameObject> _buttons;
 
     public List<Gym> gyms;
 
@@ -56,11 +57,12 @@ public class GymController : MonoBehaviour
             if (i != 0)
             {
                 bool available = gyms[i].isAvialiable;
-                zones[i].SetActive(available);
+                zones[i - 1].SetActive(available);
 
                 // если куплена → выключаем sign и collider
                 _signs[i - 1].SetActive(!available);
                 _colliders[i - 1].SetActive(!available);
+                _buttons[i - 1].SetActive(!available);
             }
         }
 
@@ -104,11 +106,12 @@ public class GymController : MonoBehaviour
 
             // открываем следующую зону
             gyms[index + 1].isAvialiable = true;
-            zones[index + 1].SetActive(true);
+            zones[index].SetActive(true);
 
             // отключаем табличку и коллайдер этой зоны
             _signs[index].SetActive(false);
             _colliders[index].SetActive(false);
+            _buttons[index].SetActive(false);
 
             MusicController.Instance.PlaySpecificSound(_upgradeSound);
             

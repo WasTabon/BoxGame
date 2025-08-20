@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
@@ -16,6 +15,13 @@ public enum UIKey
     BuyZone5,
     BuyZone6,
     BuyZone7,
+    TakeMoney2,
+    TakeMoney3,
+    TakeMoney4,
+    TakeMoney5,
+    TakeMoney6,
+    TakeMoney7,
+    TakeMoney8,
 }
 
 [System.Serializable]
