@@ -35,6 +35,7 @@ public class UIController : MonoBehaviour
 {
     public static UIController Instance;
 
+    [SerializeField] private TextMeshProUGUI _materialText;
     [SerializeField] private TextMeshProUGUI _moneyText1;
     [SerializeField] private TextMeshProUGUI _moneyText2;
     [SerializeField] private TextMeshProUGUI _moneyText3;
@@ -84,6 +85,7 @@ public class UIController : MonoBehaviour
         _moneyText1.text = WalletController.Instance.Money.ToString();
         _moneyText2.text = WalletController.Instance.Money.ToString();
         _moneyText3.text = WalletController.Instance.Money.ToString();
+        _materialText.text = WalletController.Instance.Materials.ToString();
     }
 
     public void OpenGymWindow(int index)
