@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         
-        // зробити збір грошей і прокачку
+        // доробити покупку зон, добавити шоб можна було тоже гроші збирати, улучшити лвл дизайн і якось геймплей разнообразити
     }
 
     private void FixedUpdate()
