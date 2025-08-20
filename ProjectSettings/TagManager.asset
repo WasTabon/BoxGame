@@ -20,6 +20,7 @@ TagManager:
   - TakeMoney6
   - TakeMoney7
   - TakeMoney8
+  - Bonus
   layers:
   - Default
   - TransparentFX
