@@ -2904,7 +2904,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: young_adult_man_A
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2201540164859035676, guid: 2a8a3c0fe482c2a448df33d7a7c68975, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3239,7 +3240,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: young_adult_woman_D
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2860405082807747570, guid: ed644ca1bef6100438225dd9d7cc52c0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3317,7 +3319,8 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: f335682139f468041bb9024080bcaa41, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -4876253859934518455, guid: 8f605ea3c64eeb647a0ca310171776ae, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6005,7 +6008,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -5625941270198234376, guid: fd5b25a3d2bbd5d4f82f78c132fc5624, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7725,7 +7729,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: xtra_streetgirl_A
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3534309392999716474, guid: 67f2f7f6bb131fd44adbd1288a777afc, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -10764,7 +10769,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -9146478088747369602, guid: 8a6e4a50124bea446a58ca2cb19a870f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -16569,23 +16575,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7156330664774647248, guid: bcc8c8f342f71a7439ac0579aa86f030, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -20.510002
+      value: -17.31
       objectReference: {fileID: 0}
     - target: {fileID: 7156330664774647248, guid: bcc8c8f342f71a7439ac0579aa86f030, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7156330664774647248, guid: bcc8c8f342f71a7439ac0579aa86f030, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7156330664774647248, guid: bcc8c8f342f71a7439ac0579aa86f030, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7156330664774647248, guid: bcc8c8f342f71a7439ac0579aa86f030, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7156330664774647248, guid: bcc8c8f342f71a7439ac0579aa86f030, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -16593,7 +16599,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7156330664774647248, guid: bcc8c8f342f71a7439ac0579aa86f030, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7156330664774647248, guid: bcc8c8f342f71a7439ac0579aa86f030, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -16603,7 +16609,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: casual_Female_K
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -4513969838509426261, guid: bcc8c8f342f71a7439ac0579aa86f030, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -27047,20 +27054,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &508755926580538658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4740773068273176463}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54f141628068b9b4493f69f797f003b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AutoPlayAnimations: 1
-  PaletteOverride: {fileID: 0}
 --- !u!4 &542591644112308569
 Transform:
   m_ObjectHideFlags: 0
@@ -28352,20 +28345,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1366991673}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2214775748164433132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8350747937364620530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54f141628068b9b4493f69f797f003b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AutoPlayAnimations: 1
-  PaletteOverride: {fileID: 0}
 --- !u!1 &2254921333134716883
 GameObject:
   m_ObjectHideFlags: 0
@@ -28928,7 +28907,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2469421797616882526}
   - component: {fileID: 8405136228473784612}
-  - component: {fileID: 7177401968069534666}
   m_Layer: 0
   m_Name: young_adult_man_E
   m_TagString: Untagged
@@ -30273,7 +30251,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5368655039878993205}
   - component: {fileID: 2045029526612004687}
-  - component: {fileID: 508755926580538658}
   m_Layer: 0
   m_Name: young_adult_woman_A
   m_TagString: Untagged
@@ -31915,20 +31892,6 @@ Transform:
   - {fileID: 766567205198906253}
   m_Father: {fileID: 6422257044870216268}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7177401968069534666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2958573198276282852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54f141628068b9b4493f69f797f003b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AutoPlayAnimations: 1
-  PaletteOverride: {fileID: 0}
 --- !u!1 &7195307717791587346
 GameObject:
   m_ObjectHideFlags: 0
@@ -33017,7 +32980,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8694200925960662600}
   - component: {fileID: 3334965522331350066}
-  - component: {fileID: 2214775748164433132}
   m_Layer: 0
   m_Name: SquatWomen
   m_TagString: Untagged
