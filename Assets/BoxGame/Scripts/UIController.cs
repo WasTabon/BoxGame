@@ -22,6 +22,7 @@ public enum UIKey
     TakeMoney6,
     TakeMoney7,
     TakeMoney8,
+    Bonus,
 }
 
 [System.Serializable]

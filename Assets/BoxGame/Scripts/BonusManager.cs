@@ -9,14 +9,16 @@ public class BonusManager : MonoBehaviour
     public static BonusManager Instance;
 
     [Header("UI Elements")]
-    [SerializeField] private Transform rewardsParent; // Родитель с наградами
-    [SerializeField] private GameObject rewardPrefab; // Префаб награды (текст + кнопка)
+    [SerializeField] private Transform rewardsParent;   // Родитель с наградами
+    [SerializeField] private GameObject rewardPrefab;   // Префаб обычной награды (деньги)
+    [SerializeField] private GameObject materialsRewardPrefab; // Префаб награды за 1000 материалов
 
     private int[] rewardThresholds;   // Сколько денег нужно для награды
-    private bool[] rewardClaimed;     // Получена ли награда
+    private bool[] rewardClaimed;     // Получена ли награда (по деньгам)
     private int totalMoneyEarned;     // Сколько всего игрок заработал денег (накопительно)
 
     private bool autoMaterialsStarted;
+    private bool materialsRewardClaimed;
 
     private void Awake()
     {
@@ -40,6 +42,8 @@ public class BonusManager : MonoBehaviour
         for (int i = 0; i < rewardClaimed.Length; i++)
             rewardClaimed[i] = PlayerPrefs.GetInt($"RewardClaimed{i}", 0) == 1;
 
+        materialsRewardClaimed = PlayerPrefs.GetInt("MaterialsRewardClaimed", 0) == 1;
+
         autoMaterialsStarted = PlayerPrefs.GetInt("AutoMaterials", 0) == 1;
         if (autoMaterialsStarted)
             StartCoroutine(AutoMaterialsCoroutine());
@@ -53,7 +57,7 @@ public class BonusManager : MonoBehaviour
         foreach (Transform child in rewardsParent)
             Destroy(child.gameObject);
 
-        // Создаём элементы UI для каждой награды
+        // Создаём элементы UI для наград по деньгам
         for (int i = 0; i < rewardThresholds.Length; i++)
         {
             GameObject obj = Instantiate(rewardPrefab, rewardsParent);
@@ -65,29 +69,18 @@ public class BonusManager : MonoBehaviour
 
             UpdateRewardUI(index, text, button);
         }
+
+        // Создаём отдельный элемент UI для награды за 1000 материалов
+        GameObject matObj = Instantiate(materialsRewardPrefab, rewardsParent);
+        TextMeshProUGUI matText = matObj.transform.Find("ProgressText").GetComponent<TextMeshProUGUI>();
+        Button matButton = matObj.transform.Find("ClaimButton").GetComponent<Button>();
+        matButton.onClick.AddListener(ClaimMaterialsReward);
+
+        UpdateMaterialsRewardUI(matText, matButton);
     }
 
     private void UpdateRewardUI(int index, TextMeshProUGUI text, Button button)
     {
-        if (text == null)
-        {
-            Debug.LogError($"[BonusManager] ProgressText is NULL for reward {index}. Проверь, есть ли объект 'ProgressText' в префабе rewardPrefab.");
-            return;
-        }
-
-        if (button == null)
-        {
-            Debug.LogError($"[BonusManager] ClaimButton is NULL for reward {index}. Проверь, есть ли объект 'ClaimButton' в префабе rewardPrefab.");
-            return;
-        }
-
-        TextMeshProUGUI buttonLabel = button.GetComponentInChildren<TextMeshProUGUI>();
-        if (buttonLabel == null)
-        {
-            Debug.LogError($"[BonusManager] ClaimButton {index} не имеет дочернего Text. Возможно, у тебя используется TextMeshPro (TMP_Text).");
-            return;
-        }
-        
         int need = rewardThresholds[index];
         text.text = $"{totalMoneyEarned}/{need}";
 
@@ -102,10 +95,26 @@ public class BonusManager : MonoBehaviour
             button.GetComponentInChildren<TextMeshProUGUI>().text = "Take";
         }
     }
-    
+
+    private void UpdateMaterialsRewardUI(TextMeshProUGUI text, Button button)
+    {
+        text.text = $"{WalletController.Instance.Materials}/1000";
+
+        if (materialsRewardClaimed)
+        {
+            button.interactable = false;
+            button.GetComponentInChildren<TextMeshProUGUI>().text = "Received";
+        }
+        else
+        {
+            button.interactable = WalletController.Instance.Materials >= 1000;
+            button.GetComponentInChildren<TextMeshProUGUI>().text = "Take";
+        }
+    }
+
     private void HandleMoneyEarned(int delta)
     {
-        if (delta > 0) // важно: считаем только полученные, не траты
+        if (delta > 0)
         {
             totalMoneyEarned += delta;
             PlayerPrefs.SetInt("TotalMoneyEarned", totalMoneyEarned);
@@ -116,7 +125,9 @@ public class BonusManager : MonoBehaviour
 
     private void HandleMaterialsChanged(int newValue)
     {
-        if (!autoMaterialsStarted && newValue >= 1000)
+        RefreshMaterialsUI();
+
+        if (!autoMaterialsStarted && newValue >= 1000 && materialsRewardClaimed)
         {
             autoMaterialsStarted = true;
             PlayerPrefs.SetInt("AutoMaterials", 1);
@@ -138,26 +149,51 @@ public class BonusManager : MonoBehaviour
         PlayerPrefs.Save();
 
         RefreshAllUI();
+    }
 
-        // Проверяем авто-материалы
-        if (!autoMaterialsStarted && WalletController.Instance.Materials >= 1000)
+    private void ClaimMaterialsReward()
+    {
+        if (materialsRewardClaimed) return;
+        if (WalletController.Instance.Materials < 1000) return;
+
+        materialsRewardClaimed = true;
+        PlayerPrefs.SetInt("MaterialsRewardClaimed", 1);
+        PlayerPrefs.Save();
+
+        if (!autoMaterialsStarted)
         {
             autoMaterialsStarted = true;
             PlayerPrefs.SetInt("AutoMaterials", 1);
             PlayerPrefs.Save();
-
             StartCoroutine(AutoMaterialsCoroutine());
         }
+
+        RefreshMaterialsUI();
     }
 
     private void RefreshAllUI()
     {
         for (int i = 0; i < rewardsParent.childCount; i++)
         {
-            TextMeshProUGUI text = rewardsParent.GetChild(i).Find("ProgressText").GetComponent<TextMeshProUGUI>();
-            Button button = rewardsParent.GetChild(i).Find("ClaimButton").GetComponent<Button>();
-            UpdateRewardUI(i, text, button);
+            Transform child = rewardsParent.GetChild(i);
+
+            if (i < rewardThresholds.Length) // обычные награды
+            {
+                TextMeshProUGUI text = child.Find("ProgressText").GetComponent<TextMeshProUGUI>();
+                Button button = child.Find("ClaimButton").GetComponent<Button>();
+                UpdateRewardUI(i, text, button);
+            }
         }
+
+        RefreshMaterialsUI();
+    }
+
+    private void RefreshMaterialsUI()
+    {
+        Transform matReward = rewardsParent.GetChild(rewardThresholds.Length); // последний объект — материалы
+        TextMeshProUGUI text = matReward.Find("ProgressText").GetComponent<TextMeshProUGUI>();
+        Button button = matReward.Find("ClaimButton").GetComponent<Button>();
+        UpdateMaterialsRewardUI(text, button);
     }
 
     private IEnumerator AutoMaterialsCoroutine()
