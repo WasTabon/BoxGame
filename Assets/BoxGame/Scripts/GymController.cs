@@ -11,6 +11,7 @@ public class Gym
     public int income;
     public int upgradeCost;
     public bool isAvialiable = false;
+    public int MaxCostPrice;
 
     private const int baseCost = 500;
     private const float costMultiplier = 1.75f;
@@ -126,6 +127,11 @@ public class GymController : MonoBehaviour
         }
     }
 
+    public bool CheckPrice(int index, int price)
+    {
+        return gyms[index].MaxCostPrice >= price;
+    }
+
     public void SaveGyms()
     {
         GymListWrapper wrapper = new GymListWrapper { gyms = gyms };
@@ -140,7 +146,14 @@ public class GymController : MonoBehaviour
         {
             string json = PlayerPrefs.GetString("GymsData");
             GymListWrapper wrapper = JsonUtility.FromJson<GymListWrapper>(json);
-            gyms = wrapper.gyms;
+            //gyms = wrapper.gyms;
+            for (int i = 0; i < gyms.Count && i < wrapper.gyms.Count; i++)
+            {
+                gyms[i].level = wrapper.gyms[i].level;
+                gyms[i].income = wrapper.gyms[i].income;
+                gyms[i].upgradeCost = wrapper.gyms[i].upgradeCost;
+                gyms[i].isAvialiable = wrapper.gyms[i].isAvialiable;
+            }
         }
     }
 }

@@ -39,7 +39,8 @@ public class UIController : MonoBehaviour
     public static UIController Instance;
 
     [SerializeField] private Slider slider;  // Слайдер из инспектора
-    [SerializeField] private Text valueText;
+    [SerializeField] private TextMeshProUGUI valueText;
+    [SerializeField] private TextMeshProUGUI statusText;
     
     [Header("Auto Panel Settings")]
     [SerializeField] private GameObject _autoPanel;   // панель, которая появляется раз в 5 минут
@@ -73,6 +74,8 @@ public class UIController : MonoBehaviour
     private int _currentIndex;
     
     private Dictionary<UIKey, Transform> uiDictionary;
+    
+    private int currentValue;
 
     private Gym _currentGym;
 
@@ -93,6 +96,9 @@ public class UIController : MonoBehaviour
 
     private void Start()
     {
+        slider.onValueChanged.AddListener(OnSliderChanged);
+        OnSliderChanged(slider.value);
+        
         StartCoroutine(AutoPanelRoutine());
     }
 
@@ -102,6 +108,43 @@ public class UIController : MonoBehaviour
         _moneyText2.text = WalletController.Instance.Money.ToString();
         _moneyText3.text = WalletController.Instance.Money.ToString();
         _materialText.text = WalletController.Instance.Materials.ToString();
+    }
+    
+    private void OnSliderChanged(float value)
+    {
+        // Преобразуем float -> int
+        currentValue = Mathf.RoundToInt(value);
+
+        // Выводим на экран (если есть текст)
+        if (valueText != null)
+            valueText.text = $"{currentValue}$";
+
+        // Можно вызвать событие или использовать currentValue в логике игры
+        Debug.Log("Значение: " + currentValue);
+    }
+
+    public int GetValue()
+    {
+        return currentValue;
+    }
+
+    public void Check()
+    {
+        if (GymController.Instance.CheckPrice(_currentIndex, currentValue))
+        {
+            statusText.text = $"This is good price";
+            statusText.color = Color.green;
+        }
+        else
+        {
+            statusText.text = $"This is bad price";
+            statusText.color = Color.red;
+        }
+    }
+
+    public void SetTextNull()
+    {
+        statusText.text = "";
     }
 
     public void OpenGymWindow(int index)
