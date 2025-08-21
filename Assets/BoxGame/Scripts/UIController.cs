@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
@@ -36,6 +38,14 @@ public class UIController : MonoBehaviour
 {
     public static UIController Instance;
 
+    [SerializeField] private Slider slider;  // Слайдер из инспектора
+    [SerializeField] private Text valueText;
+    
+    [Header("Auto Panel Settings")]
+    [SerializeField] private GameObject _autoPanel;   // панель, которая появляется раз в 5 минут
+    [SerializeField] private float _interval = 300f;  // 5 минут = 300 секунд
+    [SerializeField] private int _moneyCost = 100;
+    
     [SerializeField] private TextMeshProUGUI _materialText;
     [SerializeField] private TextMeshProUGUI _moneyText1;
     [SerializeField] private TextMeshProUGUI _moneyText2;
@@ -79,6 +89,11 @@ public class UIController : MonoBehaviour
                 element.target.localScale = Vector3.zero;
             }
         }
+    }
+
+    private void Start()
+    {
+        StartCoroutine(AutoPanelRoutine());
     }
 
     private void Update()
@@ -179,6 +194,28 @@ public class UIController : MonoBehaviour
         else
         {
             Debug.LogWarning($"UIController: Элемент {key} не найден!");
+        }
+    }
+    
+    private IEnumerator AutoPanelRoutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(_interval);
+
+            // снимаем деньги (если есть)
+            if (WalletController.Instance.Money >= _moneyCost)
+            {
+                WalletController.Instance.Money -= _moneyCost;
+            }
+            else
+            {
+                WalletController.Instance.Money = 0;
+            }
+
+            // показываем панель
+            if (_autoPanel != null)
+                _autoPanel.SetActive(true);
         }
     }
 }

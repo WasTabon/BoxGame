@@ -16,12 +16,13 @@ public class WalletController : MonoBehaviour
         get => _money;
         set
         {
-            int delta = value - _money;
-            
-            _money = value;
+            int newValue = Mathf.Max(0, value);
+            int delta = newValue - _money;
+
+            _money = newValue;
             PlayerPrefs.SetInt("Money", _money);
             PlayerPrefs.Save();
-            
+
             OnMoneyChanged?.Invoke(delta);
         }
     }
