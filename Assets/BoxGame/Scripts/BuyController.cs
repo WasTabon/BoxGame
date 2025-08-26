@@ -16,7 +16,7 @@ public class BuyController : MonoBehaviour
         if (product.definition.id == _donateId)
         {
             Debug.Log("Complete");
-            //SkillController.Instance.money += 50;
+            WalletController.Instance.Money += 500;
             //PlayerPrefs.SetInt("money", SkillController.Instance.money);
             PlayerPrefs.Save();
             MusicController.Instance.PlaySpecificSound(buySound);
