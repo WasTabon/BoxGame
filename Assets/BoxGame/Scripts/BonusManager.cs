@@ -53,11 +53,15 @@ public class BonusManager : MonoBehaviour
 
     private void CreateUI()
     {
-        // Очищаем старое
         foreach (Transform child in rewardsParent)
             Destroy(child.gameObject);
 
-        // Создаём элементы UI для наград по деньгам
+        GameObject matObj = Instantiate(materialsRewardPrefab, rewardsParent);
+        TextMeshProUGUI matText = matObj.transform.Find("ProgressText").GetComponent<TextMeshProUGUI>();
+        Button matButton = matObj.transform.Find("ClaimButton").GetComponent<Button>();
+        matButton.onClick.AddListener(ClaimMaterialsReward);
+
+        UpdateMaterialsRewardUI(matText, matButton);
         for (int i = 0; i < rewardThresholds.Length; i++)
         {
             GameObject obj = Instantiate(rewardPrefab, rewardsParent);
@@ -69,14 +73,6 @@ public class BonusManager : MonoBehaviour
 
             UpdateRewardUI(index, text, button);
         }
-
-        // Создаём отдельный элемент UI для награды за 1000 материалов
-        GameObject matObj = Instantiate(materialsRewardPrefab, rewardsParent);
-        TextMeshProUGUI matText = matObj.transform.Find("ProgressText").GetComponent<TextMeshProUGUI>();
-        Button matButton = matObj.transform.Find("ClaimButton").GetComponent<Button>();
-        matButton.onClick.AddListener(ClaimMaterialsReward);
-
-        UpdateMaterialsRewardUI(matText, matButton);
     }
 
     private void UpdateRewardUI(int index, TextMeshProUGUI text, Button button)
@@ -154,7 +150,12 @@ public class BonusManager : MonoBehaviour
     private void ClaimMaterialsReward()
     {
         if (materialsRewardClaimed) return;
+        
+        Debug.Log($"Claimed");
+        
         if (WalletController.Instance.Materials < 1000) return;
+        
+        Debug.Log($"Not enough");
 
         materialsRewardClaimed = true;
         PlayerPrefs.SetInt("MaterialsRewardClaimed", 1);
@@ -169,6 +170,8 @@ public class BonusManager : MonoBehaviour
         }
 
         RefreshMaterialsUI();
+        
+        Debug.Log($"Got reward");
     }
 
     private void RefreshAllUI()
