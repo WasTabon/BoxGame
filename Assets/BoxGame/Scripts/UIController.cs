@@ -51,6 +51,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _moneyText1;
     [SerializeField] private TextMeshProUGUI _moneyText2;
     [SerializeField] private TextMeshProUGUI _moneyText3;
+    [SerializeField] private TextMeshProUGUI _moneyText4;
     
     [SerializeField] private string _moneyPerSecondText = "$/second";
 
@@ -107,6 +108,7 @@ public class UIController : MonoBehaviour
         _moneyText1.text = WalletController.Instance.Money.ToString();
         _moneyText2.text = WalletController.Instance.Money.ToString();
         _moneyText3.text = WalletController.Instance.Money.ToString();
+        _moneyText4.text = WalletController.Instance.Money.ToString();
         _materialText.text = WalletController.Instance.Materials.ToString();
     }
     
