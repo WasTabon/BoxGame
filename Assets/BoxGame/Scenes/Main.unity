@@ -34408,6 +34408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2236fbabcae72b4697d8193f8fbd399, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stopSound: {fileID: 8300000, guid: 3623531cca334f64bbc316fd23211ec8, type: 3}
   footSteps:
   - {fileID: 8300000, guid: 1bb86c265ca87db4fb9cf0f1a1337f01, type: 3}
   - {fileID: 8300000, guid: e280ce39906dbfc4abe3f590d83e44a3, type: 3}

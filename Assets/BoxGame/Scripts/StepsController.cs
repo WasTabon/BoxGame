@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class StepsController : MonoBehaviour
 {
+    public AudioClip stopSound;
+    
     public List<AudioClip> footSteps;
 
     public void PlayFootstep()
@@ -10,5 +12,10 @@ public class StepsController : MonoBehaviour
         int random = Random.Range(0, footSteps.Count);
         
         MusicController.Instance.PlaySpecificSound(footSteps[random]);
+    }
+
+    public void PlayStopSound()
+    {
+        MusicController.Instance.PlaySpecificSound(stopSound);
     }
 }
